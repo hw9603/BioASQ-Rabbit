@@ -3,6 +3,7 @@ from deiis.model import Serializer
 from nltk import sent_tokenize, word_tokenize
 import time
 
+
 class Splitter(Task):
     def __init__(self):
         super(Splitter, self).__init__('splitter')
@@ -42,10 +43,11 @@ class Printer(Task):
                 print token
             print ''
 
+
 if __name__ == '__main__':
     splitter = Splitter()
     tokenizer = Tokenizer()
-    printer = Printer();
+    printer = Printer()
 
     services = (splitter, tokenizer, printer)
 

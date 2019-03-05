@@ -10,7 +10,7 @@ The subclass that extends the abstract class is valid if and only if all the abs
 from deiis.rabbit import Task, Message
 from deiis.model import Serializer
 
-from singletonConceptId import *
+# from singletonConceptId import *
 
 import logging
 from logging import config
@@ -25,7 +25,7 @@ class Expander(Task):
     # @classmethod
     def __init__(self, route):  # constructor for the abstract class
         super(Expander, self).__init__(route)
-        self.mm = SingletonMetaMap.Instance().mm
+        # self.mm = SingletonMetaMap.Instance().mm
 
     def perform(self, input):
         message = Serializer.parse(input, Message)
@@ -49,19 +49,19 @@ class Expander(Task):
 
     # Given a sentence as input, this method gives a list of all the biomedical concepts identified by the metamap
     # @classmethod
-    def getMetaConcepts(self, sentence):
-        self.logger.info('retrieving meta concepts from MetaMap')
-        try:
-            sents = [sentence]
-            cuiList = []
-            # Following line is an example of how the variable sents (string) has to be passed into extract_concepts as a list.
-            # sents = ['John had a leukemia']# and heart attack']
-            # self.mm = SingletonMetaMap.Instance().mm
-            metaConcepts, error = self.mm.extract_concepts(sents, [1, 2])
-            return metaConcepts
-        except Exception as e:
-            self.logger.debug('Metamap exception ' + str(e))
-            return []
+    # def getMetaConcepts(self, sentence):
+    #     self.logger.info('retrieving meta concepts from MetaMap')
+    #     try:
+    #         sents = [sentence]
+    #         cuiList = []
+    #         # Following line is an example of how the variable sents (string) has to be passed into extract_concepts as a list.
+    #         # sents = ['John had a leukemia']# and heart attack']
+    #         # self.mm = SingletonMetaMap.Instance().mm
+    #         metaConcepts, error = self.mm.extract_concepts(sents, [1, 2])
+    #         return metaConcepts
+    #     except Exception as e:
+    #         self.logger.debug('Metamap exception ' + str(e))
+    #         return []
 
 
 class NoneExpander(Expander):
