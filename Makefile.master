@@ -1,0 +1,15 @@
+REPO=hw9603/bioasq-wenhe
+IMAGE=$(NAME)
+TAG=$(REPO)/$(IMAGE)
+
+.PHONY: run
+
+docker:
+	docker build -t $(IMAGE) .
+
+push:
+	docker tag $(IMAGE) $(TAG)
+	docker push $(TAG)
+
+run:
+	docker run -it --rm --name $(NAME) -e HOST=$(RABBIT_HOST) $(IMAGE) /bin/bash

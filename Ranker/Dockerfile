@@ -1,7 +1,8 @@
-FROM deiis/base-image
+#FROM deiis/base-image
+FROM docker.lappsgrid.org/deiis/base
 
-COPY *.py /root/
-COPY logging.ini /root
+RUN pip install nltk sklearn werkzeug lxml diskcache pyquery pika
+COPY . /root/
 WORKDIR /root
 
 ENTRYPOINT ["python", "service.py"]

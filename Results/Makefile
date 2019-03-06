@@ -14,5 +14,5 @@
 #stop:
 #	docker rm -f $(NAME)
 
-NAME=ranker
+NAME=results
 include ../Makefile.master

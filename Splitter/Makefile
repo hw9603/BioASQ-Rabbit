@@ -14,5 +14,5 @@
 #stop:
 #	docker rm -f $(NAME)
 
-NAME=ranker
+NAME=splitter
 include ../Makefile.master
