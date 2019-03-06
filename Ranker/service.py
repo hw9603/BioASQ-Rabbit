@@ -9,7 +9,8 @@ from HardMMR import HardMMR
 if __name__ == '__main__':
     print 'Declaring the services'
     services = list()
-    services.append(CoreMMR())
+    host = "ec2-13-58-28-131.us-east-2.compute.amazonaws.com"
+    services.append(CoreMMR(host))
     # services.append(SoftMMR())
     # services.append(HardMMR())
 

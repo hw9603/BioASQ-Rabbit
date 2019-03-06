@@ -12,12 +12,14 @@ messages.
 """
 
 import pika
+import os
 import threading
 import logging
 
 from deiis.model import Serializer, JsonObject, Type
 
 PERSIST = pika.BasicProperties(delivery_mode=2)
+host = os.environ.get('RABBITMQ_HOST')
 
 # Python 3 does not have a basestring type. So on Python 3 we assign the 'str'
 # type to 'basestring' so we can test if a variable is a string in Python 2 and 3.
@@ -72,7 +74,7 @@ class MessageBus(object):
         bus = MessageBus()
         bus.publish('target', 'Hello world.')
     """
-    def __init__(self, exchange='message_bus', host='localhost'):
+    def __init__(self, exchange='message_bus', host=host):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host))
         self.channel = self.connection.channel()
         self.channel.exchange_declare(exchange=exchange, exchange_type='direct')
@@ -101,7 +103,7 @@ class BusListener(object):
         # Send a message to the above listener:
         bus.publish('my.address', 'Hello world.')
     """
-    def __init__(self, route, exchange='message_bus', host='localhost'):
+    def __init__(self, route, exchange='message_bus', host=host):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host))
         self.channel = self.connection.channel()
         self.channel.exchange_declare(exchange=exchange, exchange_type='direct')
@@ -136,7 +138,7 @@ class Broadcaster(object):
 
     Creates a 'fanout' exchange named 'broadcast'.
     """
-    def __init__(self, exchange='broadcast', host='localhost'):
+    def __init__(self, exchange='broadcast', host=host):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(host))
         self.channel = self.connection.channel()
         self.channel.exchange_declare(exchange=exchange, exchange_type='fanout')

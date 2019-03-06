@@ -11,8 +11,8 @@ logging.config.fileConfig('logging.ini')
 
 
 class Splitter(Task):
-    def __init__(self):
-        super(Splitter, self).__init__('splitter')
+    def __init__(self, host):
+        super(Splitter, self).__init__('splitter', host=host)
 
     def perform(self, input):
         message = Serializer.parse(input, Message)

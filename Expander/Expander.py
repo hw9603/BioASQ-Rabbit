@@ -23,8 +23,8 @@ class Expander(Task):
     # __metaclass__ = abc.ABCMeta
 
     # @classmethod
-    def __init__(self, route):  # constructor for the abstract class
-        super(Expander, self).__init__(route)
+    def __init__(self, route, host):  # constructor for the abstract class
+        super(Expander, self).__init__(route, host=host)
         # self.mm = SingletonMetaMap.Instance().mm
 
     def perform(self, input):

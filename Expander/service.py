@@ -11,8 +11,9 @@ if __name__ == "__main__":
     # Launch the tasks
     logger = logging.getLogger('main')
     tasks = []
+    host = "ec2-13-58-28-131.us-east-2.compute.amazonaws.com"
     for cls in [NoneExpander]:
-        instance = cls()
+        instance = cls(host)
         tasks.append(instance)
         logger.info('Staring service %s', cls.__name__)
         instance.start()
