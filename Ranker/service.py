@@ -10,8 +10,8 @@ if __name__ == '__main__':
     print 'Declaring the services'
     services = list()
     services.append(CoreMMR())
-    services.append(SoftMMR())
-    services.append(HardMMR())
+    # services.append(SoftMMR())
+    # services.append(HardMMR())
 
     print 'Staring the services'
     for service in services:
