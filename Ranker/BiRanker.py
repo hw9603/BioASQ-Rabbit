@@ -59,14 +59,16 @@ class BiRanker(Task):
         sentences = []
         # snippetsText = []
         for snippet in question.snippets: #['snippets']:
-            text = unicode(snippet.text).encode("ascii", "ignore")
-            # snippetsText.append(text)
-            if text == "":
-                continue
-            try:
-                sentences += sent_tokenize(text)
-            except:
-                sentences += text.split(". ")  # Notice the space after the dot
+            for sent in snippet.sentences:
+                sentences.append(sent)
+            # text = unicode(snippet.text).encode("ascii", "ignore")
+            # # snippetsText.append(text)
+            # if text == "":
+            #     continue
+            # try:
+            #     sentences += sent_tokenize(text)
+            # except:
+            #     sentences += text.split(". ")  # Notice the space after the dot
         return sentences
 
     def computePositions(self, snippets):

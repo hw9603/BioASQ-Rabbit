@@ -4,6 +4,11 @@ from deiis.model import Serializer, Question, Sentence
 
 from nltk import word_tokenize, sent_tokenize
 
+import logging
+from logging import config
+
+logging.config.fileConfig('logging.ini')
+
 
 class Splitter(Task):
     def __init__(self):

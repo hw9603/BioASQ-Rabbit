@@ -66,7 +66,7 @@ class CoreMMR(BiRanker):
             # maintaining a list of sentences that are not already selected so they can be used for selection for next iteration
             sentences = set(sentences).difference(set(best))
             if current_best != None:
-                selectedSentences.append(current_best)
+                selectedSentences.append(current_best.text)
             else:
                 break
 
