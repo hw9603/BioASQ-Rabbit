@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+import os
 from deiis.rabbit import MessageBus, Message
 
 # All the services that may be running.
@@ -12,7 +13,7 @@ all = [ 'splitter', 'mmr.hard', 'mmr.soft', 'mmr.core',
 
 # The shutdown message for the services.
 die = Message.Command('DIE', [])
-bus = MessageBus()
+bus = MessageBus(host=os.environ.get("RABBIT_HOST"))
 
 
 if len(sys.argv) > 1:

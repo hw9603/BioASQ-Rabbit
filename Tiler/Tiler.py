@@ -4,6 +4,8 @@
 from deiis.rabbit import Task, Message
 from deiis.model import Serializer, Question
 
+import os
+
 '''
 @Author: Khyathi Raghavi Chandu
 @Date: October 17 2017
@@ -21,7 +23,7 @@ class Tiler(Task):
     # __metaclass__ = abc.ABCMeta
     # @classmethod
     def __init__(self, route):
-        super(Tiler, self).__init__(route)
+        super(Tiler, self).__init__(route, host=os.environ.get("RABBIT_HOST"))
 
     # abstract method that should be implemented by the subclass that extends this abstract class
     # @abstractmethod

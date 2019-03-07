@@ -12,6 +12,8 @@ from deiis.model import Question, Serializer
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 
+import os
+
 import logging
 from logging import config
 logging.config.fileConfig('logging.ini')
@@ -25,7 +27,7 @@ class BiRanker(Task):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, route=[], alpha=0.5, selected=10):
-        super(BiRanker, self).__init__(route)
+        super(BiRanker, self).__init__(route, host=os.environ.get("RABBIT_HOST"))
         self.alpha = alpha
         self.numSelectedSentences = selected
         self.logger.info('Created Task for %s', self.__class__.__name__)

@@ -2,6 +2,7 @@ from deiis.model import DataSet, Question, Serializer
 from deiis.rabbit import Task, Message
 
 import logging
+import os
 from logging import config
 logging.config.fileConfig('logging.ini')
 
@@ -10,6 +11,7 @@ try:
 except:
     basestring = str
 
+host = os.environ.get("RABBIT_HOST")
 
 class ResultsCollector(Task):
     """
@@ -19,7 +21,8 @@ class ResultsCollector(Task):
     """
 
     def __init__(self):
-        super(ResultsCollector, self).__init__('results')
+        print(host)
+        super(ResultsCollector, self).__init__('results', host=host)
         self.logger.info('Created Results task')
         self.count = 0
         self.questions = list()

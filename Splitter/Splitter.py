@@ -6,13 +6,14 @@ from nltk import word_tokenize, sent_tokenize
 
 import logging
 from logging import config
+import os
 
 logging.config.fileConfig('logging.ini')
 
 
 class Splitter(Task):
     def __init__(self):
-        super(Splitter, self).__init__('splitter')
+        super(Splitter, self).__init__('splitter', host=os.environ.get("RABBIT_HOST"))
 
     def perform(self, input):
         message = Serializer.parse(input, Message)

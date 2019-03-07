@@ -14,7 +14,7 @@ from deiis.model import Serializer
 
 import logging
 from logging import config
-
+import os
 logging.config.fileConfig('logging.ini')
 # logger = logging.getLogger('bioAsqLogger')
 
@@ -23,8 +23,8 @@ class Expander(Task):
     # __metaclass__ = abc.ABCMeta
 
     # @classmethod
-    def __init__(self, route, host):  # constructor for the abstract class
-        super(Expander, self).__init__(route)
+    def __init__(self, route):  # constructor for the abstract class
+        super(Expander, self).__init__(route, host=os.environ.get("RABBIT_HOST"))
         # self.mm = SingletonMetaMap.Instance().mm
 
     def perform(self, input):
@@ -65,8 +65,8 @@ class Expander(Task):
 
 
 class NoneExpander(Expander):
-    def __init__(self, host):
-        super(NoneExpander, self).__init__('expand.none', host=host)
+    def __init__(self):
+        super(NoneExpander, self).__init__('expand.none')
 
 
     def getExpansions(self, sentence):

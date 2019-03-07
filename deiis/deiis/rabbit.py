@@ -19,7 +19,7 @@ import logging
 from deiis.model import Serializer, JsonObject, Type
 
 PERSIST = pika.BasicProperties(delivery_mode=2)
-host = os.environ.get('RABBITMQ_HOST')
+host = os.environ.get('RABBIT_HOST')
 
 # Python 3 does not have a basestring type. So on Python 3 we assign the 'str'
 # type to 'basestring' so we can test if a variable is a string in Python 2 and 3.
@@ -327,9 +327,9 @@ class Task(object):
     The Task class does all the administrative busy-work needed to manage the
     RabbitMQ queues so services only need to implement the `perform` method.
     """
-    def __init__(self, route):
+    def __init__(self, route, host):
         """Route is a String containing the unique address for the service."""
-        self.bus = MessageBus()
+        self.bus = MessageBus(host=host)
         self.listener = BusListener(route)
         self.listener.register(self._handler)
         self.thread = False
