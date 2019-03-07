@@ -1,4 +1,4 @@
-REPO=hw9603/bioasq-wenhe
+REPO=hw9603/
 IMAGE=$(NAME)
 TAG=$(REPO)/$(IMAGE)
 

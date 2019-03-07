@@ -12,9 +12,8 @@ if __name__ == "__main__":
     # Launch the tasks
     logger = logging.getLogger('main')
     tasks = []
-    host = os.environ.get("RABBIT_HOST")
     for cls in [NoneExpander]:
-        instance = cls(host)
+        instance = cls()
         tasks.append(instance)
         logger.info('Staring service %s', cls.__name__)
         instance.start()

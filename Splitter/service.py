@@ -8,8 +8,7 @@ import os
 if __name__ == '__main__':
     print 'Declaring the services'
     services = list()
-    host = os.environ.get("RABBIT_HOST")
-    services.append(Splitter(host))
+    services.append(Splitter())
 
     print 'Staring the services'
     for service in services:

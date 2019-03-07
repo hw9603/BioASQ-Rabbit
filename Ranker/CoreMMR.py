@@ -11,8 +11,8 @@ from SimilarityJaccard import SimilarityJaccard
 
 
 class CoreMMR(BiRanker):
-    def __init__(self, host, route='mmr.core', alpha=0.5, selected=10):
-        super(CoreMMR, self).__init__(route=route, alpha=alpha, selected=selected, host=host)
+    def __init__(self, route='mmr.core', alpha=0.5, selected=10):
+        super(CoreMMR, self).__init__(route=route, alpha=alpha, selected=selected)
 
     # implementation of the abstract method that takes question as input and returns a ranked list of sentences as output
     def getRankedList(self, question):

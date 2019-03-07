@@ -6,8 +6,7 @@ import os
 
 if __name__ == "__main__":
     print 'Starting Tiler services.'
-    host = os.environ.get("RABBIT_HOST")
-    task = Concatenation(host)
+    task = Concatenation()
     task.start()
     task.wait_for()
 

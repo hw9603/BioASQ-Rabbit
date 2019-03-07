@@ -11,8 +11,7 @@ import os
 if __name__ == '__main__':
     print 'Declaring the services'
     services = list()
-    host = os.environ.get("RABBIT_HOST")
-    services.append(CoreMMR(host))
+    services.append(CoreMMR())
     # services.append(SoftMMR())
     # services.append(HardMMR())
 
