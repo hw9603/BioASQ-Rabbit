@@ -6,4 +6,4 @@ COPY . /root/
 
 WORKDIR /root
 
-#ENTRYPOINT ["python", "service.py"]
+ENTRYPOINT cd deiis/ && python setup.py install && cd .. && ./start.sh && /bin/bash
