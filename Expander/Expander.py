@@ -65,8 +65,8 @@ class Expander(Task):
 
 
 class NoneExpander(Expander):
-    def __init__(self):
-        super(NoneExpander, self).__init__('expand.none')
+    def __init__(self, host):
+        super(NoneExpander, self).__init__('expand.none', host=host)
 
 
     def getExpansions(self, sentence):

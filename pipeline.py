@@ -20,7 +20,8 @@ if __name__ == '__main__':
     # The list of services to send the questions to.
     pipeline = ['splitter', 'mmr.core', 'tiler.concat', 'results']
     count=0
-    host = os.environ.get('RABBITMQ_HOST')
+    host = os.environ.get('RABBIT_HOST')
+    # host = "ec2-13-58-28-131.us-east-2.compute.amazonaws.com"
     bus = MessageBus(host=host)
     for index in range(0, 10):
         question = dataset.questions[index]

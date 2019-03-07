@@ -1,5 +1,6 @@
 import logging
 from logging import config
+import os
 
 from Expander import NoneExpander
 # from SnomedctExpander import SnomedctExpander
@@ -11,7 +12,7 @@ if __name__ == "__main__":
     # Launch the tasks
     logger = logging.getLogger('main')
     tasks = []
-    host = "ec2-13-58-28-131.us-east-2.compute.amazonaws.com"
+    host = os.environ.get("RABBIT_HOST")
     for cls in [NoneExpander]:
         instance = cls(host)
         tasks.append(instance)

@@ -8,7 +8,7 @@ import os
 if __name__ == '__main__':
     print 'Declaring the services'
     services = list()
-    host = "ec2-13-58-28-131.us-east-2.compute.amazonaws.com"
+    host = os.environ.get("RABBIT_HOST")
     services.append(Splitter(host))
 
     print 'Staring the services'

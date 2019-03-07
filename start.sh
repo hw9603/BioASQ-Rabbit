@@ -7,8 +7,9 @@
 #	cd -
 #done
 #echo "Services started"
+
 if [ "$RABBIT_HOST" = "" ] ; then
-    RABBIT_HOST=ec2-13-58-28-131.us-east-2.compute.amazonaws.com
+    RABBIT_HOST=172.17.0.2
 fi
 
 for name in splitter expander ranker tiler results; do
